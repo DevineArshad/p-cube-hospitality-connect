@@ -21,12 +21,25 @@ const jobCategories = [
   { name: 'Corporate Hospitality', href: '/jobs#corporate' },
 ];
 
+
+const countriesWeserve = [
+  { name: 'United States', href: '/services#usa' },
+  { name: 'Canada', href: '/services#canada' },
+  { name: 'United Kingdom', href: '/services#uk' },
+  { name: 'Australia', href: '/services#australia' },
+  { name: 'Middle East', href: '/services#middleeast' },
+  { name: 'Europe', href: '/services#europe' },
+  {name:'UAE', href:'/services#dubai' }
+
+
+]
+
 export function Footer() {
   return (
     <footer className="bg-navy text-primary-foreground">
       {/* Main Footer */}
       <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -93,6 +106,24 @@ export function Footer() {
             </ul>
           </div>
 
+            {/* Job Categories */}
+          <div>
+            <h4 className="font-heading text-lg font-semibold mb-6">Job Categories</h4>
+            <ul className="space-y-3">
+              {countriesWeserve.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.href} 
+                    className="text-muted-foreground hover:text-gold transition-colors flex items-center gap-2 text-sm"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact & Newsletter */}
           <div className="space-y-6">
             <h4 className="font-heading text-lg font-semibold mb-6">Get In Touch</h4>
@@ -130,7 +161,7 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-navy-light">
         <div className="container py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2024 P Cube Consulting. All rights reserved.</p>
+          <p>© 2026 P Cube Consulting. All rights reserved. | Powered by Digimese</p>
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-gold transition-colors">Terms of Service</Link>

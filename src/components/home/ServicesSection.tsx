@@ -1,82 +1,118 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Globe, Home, Users, FileCheck, GraduationCap, Building2, ArrowRight } from 'lucide-react';
-import { SectionHeading } from '@/components/ui/section-heading';
+import { Button } from '@/components/ui/button';
+import chefImage from '@/assets/chef-kitchen.jpg';
+import travelAgentImage from '@/assets/medium-shot-woman-working-as-travel-agent.jpg';
+import meetingImage from '@/assets/corporate-meeting.jpg';
 
 const services = [
   {
-    icon: Globe,
-    title: 'Overseas Hospitality Recruitment',
-    description: 'We connect skilled hospitality professionals with premium opportunities across the Middle East, Europe, Southeast Asia, and beyond.',
-    color: 'bg-primary',
-  },
-  {
-    icon: Home,
-    title: 'Domestic Hospitality Staffing',
-    description: 'Comprehensive staffing solutions for hotels, resorts, and restaurants across India, from entry-level to executive positions.',
-    color: 'bg-secondary',
-  },
-  {
-    icon: Users,
-    title: 'Bulk Hiring for Hotels & Chains',
-    description: 'Large-scale recruitment campaigns for hotel chains, new property openings, and seasonal staffing requirements.',
-    color: 'bg-accent',
-  },
-  {
-    icon: FileCheck,
-    title: 'Visa & Immigration Support',
+    id: 1,
+    title: 'Immigration',
     description: 'End-to-end visa processing, documentation, and immigration assistance for seamless overseas placements.',
-    color: 'bg-primary',
+    image: chefImage,
+    link: '/services',
   },
   {
-    icon: GraduationCap,
-    title: 'Training & Skill Development',
-    description: 'Pre-deployment training programs to ensure candidates meet international hospitality standards and client expectations.',
-    color: 'bg-secondary',
+    id: 2,
+    title: 'Internship',
+    description: 'Professional internship programs connecting students and fresh graduates with hospitality industry leaders.',
+    image: travelAgentImage,
+    link: '/services',
   },
   {
-    icon: Building2,
-    title: 'Employer Recruitment Solutions',
-    description: 'Customized hiring solutions for hotels, resorts, and hospitality businesses to find the perfect talent match.',
-    color: 'bg-accent',
+    id: 3,
+    title: 'Recruitment',
+    description: 'Comprehensive recruitment solutions for hotels, resorts, and hospitality businesses to find perfect talent matches.',
+    image: meetingImage,
+    link: '/services',
+  },
+];
+
+const serviceDetails = [
+  {
+    title: 'Quick Service',
+    description: 'We believe in time and strive to deliver results quickly by wasting no time. We have even achieved filling in a position in a week\'s time.',
+    link: '/services',
+  },
+  {
+    title: 'Our Specialization',
+    description: 'Work & Travel Visa: The Work and Travel is a program run by the Government of United States of America...',
+    link: '/services',
+  },
+  {
+    title: 'Career Consultant',
+    description: 'We wish to be a trusted partner for you to launch your career on a steep curve both in India and overseas. We...',
+    link: '/services',
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section className="py-20 md:py-28 bg-muted/50">
+    <section className="py-28 md:py-28 bg-white">
       <div className="container">
-        <SectionHeading
-          badge="Our Services"
-          title="Comprehensive Hospitality Recruitment"
-          subtitle="From overseas placements to domestic staffing, we offer end-to-end recruitment solutions tailored to the hospitality industry."
-        />
+        {/* Header */}
+        <div className="flex justify-center items-center mb-12 md:mb-16 relative">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">OUR SERVICES</h2>
+          <Link 
+            to="/services"
+            className="text-blue-600 hover:text-blue-700 font-semibold text-sm md:text-base underline absolute right-0"
+          >
+            VIEW MORE &gt;
+          </Link>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Service Cards with Images */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 px-4 md:px-0">
           {services.map((service, index) => (
             <motion.div
-              key={service.title}
+              key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-card rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/20"
+              className="group flex flex-col items-center"
             >
-              <div className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <service.icon className="w-7 h-7 text-primary-foreground" />
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-lg mb-16">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
-              <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                {service.title}
+              <Link 
+                to={service.link}
+                className="bg-gray-800 hover:bg-gray-900 text-white px-16 py-3 rounded-md font-semibold transition-colors flex flex-col items-center gap-1 shadow-lg -mt-8 relative z-10"
+              >
+                {service.title} 
+                <span className="text-sm">Read More &gt;</span>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Service Details Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+          {serviceDetails.map((detail, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gray-100 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {detail.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                {service.description}
+              <p className="text-gray-700 text-sm leading-relaxed mb-6">
+                {detail.description}
               </p>
               <Link 
-                to="/services" 
-                className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors"
+                to={detail.link}
+                className="text-gray-800 hover:text-blue-600 font-semibold text-sm transition-colors"
               >
-                Learn More
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                Read More
               </Link>
             </motion.div>
           ))}

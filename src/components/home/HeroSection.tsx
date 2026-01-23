@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Globe, Users, Building2, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-hospitality.jpg';
+import heroImage from '@/assets/medium-shot-woman-working-as-travel-agent.jpg';
+
 
 const stats = [
   { icon: Globe, value: '25+', label: 'Countries Served' },
@@ -33,7 +34,7 @@ export function HeroSection() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 text-gold rounded-full text-sm font-medium mb-6">
               <Globe className="w-4 h-4" />
-              Global Hospitality Recruitment Specialists
+              Global Recruitment Specialists
             </span>
           </motion.div>
 
@@ -43,8 +44,8 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-primary-foreground leading-tight mb-6"
           >
-            Connecting Talent with{' '}
-            <span className="text-gradient-gold">World-Class</span> Hospitality Careers
+           Reliable Recruitment & Consulting for a{' '}
+            <span className="text-gradient-gold">Global Workforce</span>
           </motion.h1>
 
           <motion.p
@@ -66,13 +67,15 @@ export function HeroSection() {
           >
             <Button asChild size="lg" className="bg-gradient-gold hover:opacity-90 text-navy font-semibold shadow-gold text-lg px-8">
               <Link to="/apply">
-                Apply for Jobs
+                Apply Now
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-8">
+
+            {/* our services btn */}
+            <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-background hover:bg-primary-foreground/10 text-lg px-8">
               <Link to="/hire">
-                Hire Talent
+                Our Services
                 <Users className="ml-2 w-5 h-5" />
               </Link>
             </Button>
